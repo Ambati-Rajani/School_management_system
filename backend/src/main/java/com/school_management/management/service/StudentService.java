@@ -1,5 +1,6 @@
 package com.school_management.management.service;
 
+import com.school_management.management.model.Attendance;
 import com.school_management.management.model.Student;
 import com.school_management.management.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private AttendanceService attendanceService;
+
     public Student addStudent(Student student){
         try{
             return studentRepository.save(student);
@@ -24,6 +28,14 @@ public class StudentService {
     public List<Student> getAllStudents(){
         try{
             return studentRepository.findAll();
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
+    public List<Attendance> getAttendanceByStudentId(String erpNo){
+        try{
+            return attendanceService.getAttendanceByStudentId(erpNo);
         }catch (Exception e){
             throw e;
         }

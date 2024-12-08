@@ -1,6 +1,7 @@
 package com.school_management.management.controller.admin;
 
 import com.school_management.management.helpers.ResponseHelper;
+import com.school_management.management.model.Attendance;
 import com.school_management.management.model.Student;
 import com.school_management.management.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,16 @@ public class AdminStudentController {
         try{
             studentService.deleteStudent(erpNo);
             return ResponseHelper.createResponse(HttpStatus.OK, "student deleted successfully", true,null);
+        }catch (Exception e){
+            return ResponseHelper.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,e.getMessage(),false,null);
+        }
+    }
+
+    @GetMapping("/{erpNo}/attendance")
+    public ResponseEntity<Object> getAttendanceByStudentId(@PathVariable String erpNo){
+        try{
+            List<Attendance> data = studentService.getAttendanceByStudentId(erpNo);
+            return ResponseHelper.createResponse(HttpStatus.OK, "student attendance retrieved successfully", data,null);
         }catch (Exception e){
             return ResponseHelper.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,e.getMessage(),false,null);
         }

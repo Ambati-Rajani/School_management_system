@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeacherService } from '../../services/teacher.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgFor } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-class-details',
@@ -19,10 +20,13 @@ export class ClassDetailsComponent implements OnInit {
 
   classDetails:any = {}
   classStudents:any[] = []
+  private routeSubscription: Subscription | null = null;
 
   ngOnInit(): void {
-      this.classId = this.route.snapshot.paramMap.get('classId')
+    this.routeSubscription = this.route.paramMap.subscribe(async (params) => {
       this.loadClassDetails()
+      this.classId = params.get('classId')
+    })
   }
 
   async loadClassDetails(){

@@ -41,8 +41,7 @@ export class NavbarComponent {
       name: 'Courses',
       icon: '📋',
       children: [
-        { name: 'Course List', path: '/admin/courses/course-list' },
-        { name: 'Course Form', path: '/admin/courses/course-form' },
+        { name: 'create/view', path: '/admin/courses/course-form' },
       ],
     },
     {

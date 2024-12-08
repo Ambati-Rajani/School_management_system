@@ -43,6 +43,7 @@ const API_ENDPOINTS = {
     ADMIN_GET_ALL_STUDENT_API: '/admin/student/all',
     ADMIN_GET_STUDENT_BY_ID: (id:string) => `/admin/student/${id}`,
     ADMIN_DELETE_STUDENT_API: (id:string) => `/admin/student/${id}`,
+    ADMIN_GET_ATTENDANCE_BY_STUDENT_ID: (id:string) => `/admin/student/${id}/attendance`,
 
     // teacher endpoints
     ADMIN_ADD_TEACHER_API: '/admin/teacher',

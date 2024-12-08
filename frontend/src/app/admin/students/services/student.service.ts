@@ -38,6 +38,15 @@ export class StudentService {
     }
   }
 
+  async getAttendanceByStudentId(id:string){
+    try{
+      const res = this.http.get(API_ENDPOINTS.ADMIN_GET_ATTENDANCE_BY_STUDENT_ID(id))
+      return res;
+    }catch(e){
+      throw e
+    }
+  }
+
   async getStudentById(id:string){
     try{
       const res = this.http.get(API_ENDPOINTS.ADMIN_GET_STUDENT_BY_ID(id))

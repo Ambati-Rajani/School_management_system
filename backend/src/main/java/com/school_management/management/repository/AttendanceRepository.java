@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface AttendanceRepository extends MongoRepository<Attendance,String> {
 
-    Attendance findByStudent(Student student);
+    List<Attendance> findByStudent(Student student);
 
     List<Attendance> findByClassId(SClass sclass);
 }

@@ -47,4 +47,10 @@ public class AttendanceService {
         SClass sclass = sClassRepository.findById(classId).orElseThrow(() -> new RuntimeException("sclass not found"));
         return attendanceRepository.findByClassId(sclass);
     }
+
+    public List<Attendance> getAttendanceByStudentId(String erpNo){
+        Student student = studentRepository.findByEnrollmentNumber(erpNo).orElseThrow(() -> new RuntimeException("student not found"));
+        List<Attendance> attendance = attendanceRepository.findByStudent(student);
+        return attendance;
+    }
 }

@@ -54,7 +54,7 @@ public class TeacherController {
     }
 
     @GetMapping("/{enrollmentNumber}")
-    public ResponseEntity<Object> markAttendance(@PathVariable String enrollmentNumber) {
+    public ResponseEntity<Object> getTeacherByEnrollment(@PathVariable String enrollmentNumber) {
         try{
 
             Teacher data = teacherService.getTeacherByEnrollment(enrollmentNumber);

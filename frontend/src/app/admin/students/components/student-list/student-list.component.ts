@@ -65,9 +65,14 @@ export class StudentListComponent implements OnInit{
     }
   }
 
-  viewAttendance(id: string) {
-    this.isAttendanceModalOpen = true;
-    // Load attendance data for the student
+  async viewAttendance(id: string) {
+    try{
+      this.isAttendanceModalOpen = true;
+      const res:any = await this.studentService.getAttendanceByStudentId(id)
+      this.studentAttendance = res.data;
+    }catch(e){
+      console.log(e);
+    }
   }
 
   closeAttendanceModal() {
