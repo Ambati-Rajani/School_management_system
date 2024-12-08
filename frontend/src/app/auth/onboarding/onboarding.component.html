@@ -1,0 +1,12 @@
+<div class="bg-slate-200 min-h-screen">
+    <div class="py-8 mx-auto flex justify-center text-xl md:text-6xl font-bold text-slate-700">
+       School Management System
+    </div>
+    <div class="flex justify-center items-center mt-[6em]">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="" *ngFor="let item of roles">
+                <app-role-card [role]="item.role" [description]="item.description" [imageUrl]="item.imageUrl"></app-role-card>
+            </div>
+        </div>
+    </div>
+</div>

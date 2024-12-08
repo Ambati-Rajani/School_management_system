@@ -1,0 +1,35 @@
+<div class="p-4 bg-white rounded-lg shadow-md">
+  <h2 class="text-xl font-semibold">Assign Student</h2>
+
+  <!-- Class Selection Dropdown -->
+  <label for="classDropdown" class="block text-sm font-medium text-gray-700 mt-2">Select Class:</label>
+  <select
+    id="classDropdown"
+    [(ngModel)]="classId"
+    class="border p-2 my-2 w-full rounded"
+  >
+    <option *ngFor="let class of classes" [value]="class.sclassId">
+      {{ class.name }}
+    </option>
+  </select>
+
+  <!-- Student ID Input -->
+  <label for="studentId" class="block text-sm font-medium text-gray-700 mt-2">Student ID:</label>
+  <select
+    id="studentDropdown"
+    [(ngModel)]="studentId"
+    class="border p-2 my-2 w-full rounded"
+  >
+    <option *ngFor="let student of students" [value]="student.enrollmentNumber">
+      {{ student.name }}
+    </option>
+  </select>
+
+  <!-- Assign Button -->
+  <button
+    (click)="assignStudent()"
+    class="mt-4 p-2 bg-blue-500 text-white rounded"
+  >
+    Assign Student
+  </button>
+</div>

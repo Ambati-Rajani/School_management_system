@@ -1,0 +1,33 @@
+<div>
+
+    <div class="p-4 m-8 bg-white rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold">create class</h2>
+        <input type="text" [(ngModel)]="classPayload.name" placeholder="Class Name" class="border p-2 my-2 w-full"/>
+        <button (click)="createClass()" class="mt-4 p-2 bg-blue-500 text-white rounded">Create</button>
+    </div>
+
+    <div class="p-4 m-8 bg-white rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold">Classes</h2>
+        <!-- Student Table -->
+    <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
+        <table class="min-w-full table-auto">
+          <thead class="bg-gray-300">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600 uppercase">ID</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600 uppercase">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let class of classes"
+              class="hover:bg-gray-50 transition duration-200"
+            >
+              <td class="px-6 py-4 text-gray-700 border-b">{{ class.sclassId }}</td>
+              <td class="px-6 py-4 text-gray-700 border-b">{{ class.name }}</td>
+              
+            </tr>
+          </tbody>
+        </table>
+       
+    </div>
+</div>

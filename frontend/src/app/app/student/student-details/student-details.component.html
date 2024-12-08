@@ -1,0 +1,62 @@
+<div class="flex min-h-screen bg-gray-100">
+    
+  
+    <!-- Content -->
+    <main class="flex-1 p-8">
+      <h1 class="text-2xl font-bold mb-4">Student Details</h1>
+  
+      <!-- Student Information -->
+      <div class="bg-white p-6 shadow-lg rounded-lg">
+        <div *ngIf="!isEditing; else editMode">
+          <p class="text-2xl font-medium text-green-500"><strong class="font-bold text-black">Enrollment Number:</strong> {{ student.enrollmentNumber }}</p>
+          <p><strong>Name:</strong> {{ student.name }}</p>
+          <p><strong>DOB:</strong> {{ student.dateOfBirth }}</p>
+          <p><strong>Phone:</strong> {{ student.phone }}</p>
+          <p><strong>Grade:</strong> {{ student.grade }}</p>
+          <p><strong>Class:</strong> {{ student.class }}</p>
+          <button
+            (click)="toggleEdit()"
+            class="mt-4 p-2 bg-blue-500 text-white rounded"
+          >
+            Edit
+          </button>
+        </div>
+  
+        <ng-template #editMode>
+          <label class="block mb-2">Name</label>
+          <input
+            type="text"
+            [(ngModel)]="student.name"
+            class="border p-2 w-full rounded mb-4"
+          />
+  
+          <label class="block mb-2">Phone</label>
+          <input
+            type="phone"
+            [(ngModel)]="student.phone"
+            class="border p-2 w-full rounded mb-4"
+          />
+  
+          <div class="flex space-x-4">
+            <button
+              (click)="saveChanges()"
+              class="p-2 bg-green-500 text-white rounded"
+            >
+              Save
+            </button>
+            <button
+              (click)="toggleEdit()"
+              class="p-2 bg-red-500 text-white rounded"
+            >
+              Cancel
+            </button>
+          </div>
+        </ng-template>
+
+    </div>
+    <div class="flex flex-col gap-6 mt-8">
+        <h1 class="text-2xl font-bold mb-4">Announcements</h1>
+    </div>
+    </main>
+  </div>
+  
