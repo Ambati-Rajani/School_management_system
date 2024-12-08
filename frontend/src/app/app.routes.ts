@@ -32,6 +32,7 @@ import { ClassDetailsComponent } from './app/teacher/class-details/class-details
 import { StudentGradeComponent } from './app/student/student-grade/student-grade.component';
 import { ReportComponent } from './admin/report/report.component';
 import { ExamComponent } from './admin/exam/exam.component';
+import { StudentAttendanceComponent } from './app/student/student-attendance/student-attendance.component';
 
 export const routes: Routes = [
     {path: 'onboarding',component: OnboardingComponent},
@@ -43,6 +44,8 @@ export const routes: Routes = [
         children: [
             {path:'me',component:StudentDetailsComponent},
             {path:'grades',component:StudentGradeComponent},
+            {path:'attendance-view',component:StudentAttendanceComponent},
+
         ],
         canActivate: [AuthGaurd,StudentGaurd]
     },

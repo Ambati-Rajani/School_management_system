@@ -13,12 +13,19 @@
           [value]="studentId"
           name="studentId"
         />
-        <input
-          class="border p-2 rounded"
-          [(ngModel)]="gradePayload.courseId"
-          placeholder="Course Name"
-          name="gradePayload.courseId"
-        />
+        <div class="mb-4">
+          <label for="class" class="block text-lg font-medium text-gray-700">Select Teacher</label>
+          <select
+            id="class"
+            class="form-select w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            [(ngModel)]="gradePayload.courseId"
+            name="gradePayload.courseId"
+            required
+          >
+            <option value="" disabled>Select Course</option>
+            <option *ngFor="let course of courses" [value]="course.courseId">{{ course.courseName }}</option>
+          </select>
+        </div>
         <div class="mb-4">
             <label for="class" class="block text-lg font-medium text-gray-700">Select Teacher</label>
             <select
@@ -60,9 +67,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let grade of grades">
-            <td class="border p-2">{{ grade.gradeValue }}</td>
-            <td class="border p-2">{{ grade.courseId }}</td>
-            <td class="border p-2">{{ grade.teacherId }}</td>
+            <td class="border p-2 text-center">{{ grade.gradeValue }}</td>
+            <td class="border p-2 text-center">{{ grade.course.courseName }}</td>
+            <td class="border p-2 text-center">{{ grade.teacher.name }}</td>
           </tr>
         </tbody>
       </table>

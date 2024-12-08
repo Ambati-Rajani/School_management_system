@@ -1,0 +1,49 @@
+<div class="container mx-auto p-6">
+  <!-- Header Section -->
+  <div class="mb-4">
+    <h1 class="text-2xl font-bold">Student Attendance</h1>
+    <p class="text-gray-600">
+      <span class="font-medium">Student Name:</span> {{ attendanceData?.student?.name }} |
+      <span class="font-medium">Enrollment:</span> {{ attendanceData?.student?.enrollmentNumber }}
+    </p>
+  </div>
+
+  <!-- Attendance Table -->
+  <div class="overflow-x-auto bg-white shadow rounded-lg">
+    <table class="min-w-full table-auto border-collapse">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="py-3 px-6 text-left">Date</th>
+          <th class="py-3 px-6 text-left">Class</th>
+          <th class="py-3 px-6 text-left">Teacher</th>
+          <th class="py-3 px-6 text-left">Status</th>
+          <th class="py-3 px-6 text-left">Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let attendance of attendanceList" class="border-t">
+          <td class="py-2 px-6">{{ attendance.date }}</td>
+          <td class="py-2 px-6">{{ attendance.classId?.name }}</td>
+          <td class="py-2 px-6">
+            {{ attendance.classId?.teachers[0]?.name || 'N/A' }}
+          </td>
+          <td
+            class="py-2 px-6 font-medium"
+            [ngClass]="attendance.status === 'Present' ? 'text-green-500' : 'text-red-500'"
+          >
+            {{ attendance.status }}
+          </td>
+          <td class="py-2 px-6">{{ attendance.comments || 'No Comments' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Back Button -->
+  <button
+    (click)="goBack()"
+    class="mt-4 bg-gray-500 text-white px-4 py-2 rounded shadow hover:bg-gray-600"
+  >
+    Back
+  </button>
+</div>

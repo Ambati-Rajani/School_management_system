@@ -1,5 +1,6 @@
 package com.school_management.management.controller.app;
 
+import com.school_management.management.dto.GradeRequestDto;
 import com.school_management.management.helpers.ResponseHelper;
 import com.school_management.management.model.Grades;
 import com.school_management.management.service.GradeService;
@@ -18,7 +19,7 @@ public class AppGradeController {
     private GradeService gradeService;
 
     @PostMapping
-    public ResponseEntity<Object> addStudentGrade(@RequestBody Grades body) {
+    public ResponseEntity<Object> addStudentGrade(@RequestBody GradeRequestDto body) {
         try {
             gradeService.addGrade(body);
             return ResponseHelper.createResponse(HttpStatus.OK, "Grade added successfully.", true, null);
@@ -42,6 +43,16 @@ public class AppGradeController {
         try {
             List<Grades> data = gradeService.getGradesByStudentId(studentId);
             return ResponseHelper.createResponse(HttpStatus.OK, "Grade added successfully.", data, null);
+        } catch (Exception e) {
+            return ResponseHelper.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), false, null);
+        }
+    }
+
+    @GetMapping("/teacher/{teacherId}")
+    public ResponseEntity<Object> getGradesByTeacherId(@PathVariable String teacherId) {
+        try {
+            List<Grades> data = gradeService.getGradesByTeacherId(teacherId);
+            return ResponseHelper.createResponse(HttpStatus.OK, "Grade retrived successfully.", data, null);
         } catch (Exception e) {
             return ResponseHelper.createErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), false, null);
         }

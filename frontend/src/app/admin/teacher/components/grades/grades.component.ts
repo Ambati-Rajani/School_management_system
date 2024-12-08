@@ -7,6 +7,7 @@ import { TeacherService } from '../../../teacher/services/teacher.service';
 import { NgFor } from '@angular/common';
 import { StudentService } from '../../../students/services/student.service';
 import { AuthService } from '../../../../auth/services/auth.service';
+import { CourseService } from '../../../../services/course.service';
 
 @Component({
   selector: 'app-grades',
@@ -23,14 +24,15 @@ export class GradesComponent implements OnInit {
   teachers:any[] = []
   students:any[] = []
   grades:any[] = []
-
+  courses:any[] = []
   constructor(
     private route:ActivatedRoute,
     private gradeService:GradesService,
     private toastr:ToastrService,
     private teacherService:TeacherService,
     private studentService:StudentService,
-    private authservice:AuthService
+    private authservice:AuthService,
+    private courseSerivce:CourseService
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +41,8 @@ export class GradesComponent implements OnInit {
       this.teacherId = this.authservice.currentUser.userId;
       this.loadTeacher()
       this.loadStudentDetails()
+      this.loadAllCourses()
+      this.loadGradesByTeacherId()
   }
 
   gradePayload:any = {
@@ -81,5 +85,24 @@ export class GradesComponent implements OnInit {
     }
   }
 
+  async loadAllCourses(){
+    try{
+        const res:any = await this.courseSerivce.getAllCourses()
+        this.courses = res.data;
+    }catch(e){
+      console.log(e);
+    }
+  }
+
+  async loadGradesByTeacherId(){
+    try{
+        if(this.studentId){
+          const res:any = await this.gradeService.getGradeByStudentId(this.studentId)
+          this.grades = res.data;
+        }
+    }catch(e){
+      console.log(e);
+    }
+  }
 
 }

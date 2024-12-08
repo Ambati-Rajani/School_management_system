@@ -37,4 +37,13 @@ export class GradesService {
       throw e
     }
   }
+
+  getGradeByTeacherId(id:string){
+    try{
+      const res = this.customHttp.get(API_ENDPOINTS.GET_GRADES_BY_TEACHER_ID_API(id));
+      return res;
+    }catch(e){
+      throw e
+    }
+  }
 }

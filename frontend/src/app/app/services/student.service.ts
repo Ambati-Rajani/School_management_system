@@ -28,4 +28,13 @@ export class StudentService {
       throw e;
     }
   }
+
+  getAttendanceByStudentId(enrollment:string){
+    try{
+      const res:any = this.customHttp.get(API_ENDPOINTS.GET_ATTENDANCE_BY_STUDENT_ENROLLMENT_API(enrollment));
+      return res
+    }catch(e){
+      throw e;
+    }
+  }
 }

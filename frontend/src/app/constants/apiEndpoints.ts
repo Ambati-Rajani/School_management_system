@@ -15,6 +15,8 @@ const API_ENDPOINTS = {
 
     // student endpoints
     GET_STUDENT_BY_ENROLLMENT_API: (id:string) => `/app/student/${id}`,
+    GET_ATTENDANCE_BY_STUDENT_ENROLLMENT_API: (id:string) => `/app/student/${id}/attendance`,
+
 
     // teacher endpoints
     GET_TEACHER_BY_ENROLLMENT_API: (id:string) => `/app/teacher/${id}`,
@@ -67,7 +69,10 @@ const API_ENDPOINTS = {
     // grades endpoints
     ADD_GRADE_API: '/admin/grades/',
     UPDATE_GRADE_API: (id:string) => `/admin/grades/${id}`,
-    GET_GRADE_BY_STUDENT_ID_API: (studentId:string) => `/admin/grades/student/${studentId}`,
+    GET_GRADE_BY_STUDENT_ID_API: (studentId:string) => `/app/grades/student/${studentId}`,
+    GET_GRADES_BY_TEACHER_ID_API: (teacherId:string) => `/app/grades/teacher/${teacherId}`,
+
+
 
     // course endpoints
     CREATE_COURSE_API: '/admin/courses',
