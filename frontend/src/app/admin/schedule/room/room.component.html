@@ -1,0 +1,48 @@
+<div>
+
+    <div class="p-4 m-8 bg-white rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold">create Room</h2>
+        <div class="flex flex-col gap-8 mt-4">
+            <div class="flex flex-col gap-2">
+                <label for="">Room Number:</label>
+                <input type="text" [(ngModel)]="roomPayload.roomNumber" placeholder="room number" class="border p-2 my-2 w-full"/>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="">Room Capacity:</label>
+                <input type="number" [(ngModel)]="roomPayload.capacity" placeholder="room capacity" class="border p-2 my-2 w-full"/>
+            </div>
+        </div>
+        <!-- <div class="flex flex-col gap-2">
+            <label for="">Room Number:</label>
+            <input type="text" [(ngModel)]="roomPayload.name" placeholder="room number" class="border p-2 my-2 w-full"/>
+        </div> -->
+
+        <button (click)="createRoom()" class="mt-4 p-2 bg-blue-500 text-white rounded">Create</button>
+    </div>
+
+    <div class="p-4 m-8 bg-white rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold">Rooms</h2>
+        <!-- Student Table -->
+    <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
+        <table class="min-w-full table-auto">
+          <thead class="bg-gray-300">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600 uppercase">Room Number</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600 uppercase">Capacity</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let room of rooms"
+              class="hover:bg-gray-50 transition duration-200"
+            >
+              <td class="px-6 py-4 text-gray-700 border-b">{{ room.roomNumber }}</td>
+              <td class="px-6 py-4 text-gray-700 border-b">{{ room.capacity }}</td>
+              
+            </tr>
+          </tbody>
+        </table>
+       
+    </div>
+</div>

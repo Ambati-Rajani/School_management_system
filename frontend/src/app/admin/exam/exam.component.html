@@ -1,0 +1,68 @@
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Examination Management</h1>
+    <form (ngSubmit)="saveExam()" class="bg-white p-6 rounded shadow">
+      <div class="mb-4">
+        <label class="block text-gray-600 font-medium mb-2">Class ID</label>
+        <select [(ngModel)]="exam.classId" name="classId" class="block w-full border rounded px-4 py-2">
+            <option *ngFor="let classItem of classes" [value]="classItem.sclassId">
+              {{ classItem.name }}
+            </option>
+          </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-600 font-medium mb-2">Teacher ID</label>
+        <select [(ngModel)]="exam.teacherId" name="teacherId" class="block w-full border rounded px-4 py-2">
+            <option *ngFor="let teacher of teachers" [value]="teacher.enrollmentNumber">
+              {{ teacher.name }}
+            </option>
+          </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-600 font-medium mb-2">Date</label>
+        <input type="date" [(ngModel)]="exam.date" name="date" class="block w-full border rounded px-4 py-2" />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-600 font-medium mb-2">Time</label>
+        <input type="time" [(ngModel)]="exam.time" name="time" class="block w-full border rounded px-4 py-2" />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-600 font-medium mb-2">Status</label>
+        <select [(ngModel)]="exam.status" name="status" class="block w-full border rounded px-4 py-2">
+          <option value="Scheduled">Scheduled</option>
+          <option value="Completed">Completed</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </div>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save Exam</button>
+    </form>
+  
+    <div class="mt-6">
+      <h2 class="text-xl font-bold mb-2">Exam List</h2>
+      <table class="min-w-full bg-white">
+        <thead>
+          <tr>
+            <th class="py-2 px-4">Class ID</th>
+            <th class="py-2 px-4">Teacher ID</th>
+            <th class="py-2 px-4">Date</th>
+            <th class="py-2 px-4">Time</th>
+            <th class="py-2 px-4">Status</th>
+            <th class="py-2 px-4">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let exam of exams">
+            <td class="py-2 px-4">{{ exam.classId }}</td>
+            <td class="py-2 px-4">{{ exam.teacherId }}</td>
+            <td class="py-2 px-4">{{ exam.date }}</td>
+            <td class="py-2 px-4">{{ exam.time }}</td>
+            <td class="py-2 px-4">{{ exam.status }}</td>
+            <td class="py-2 px-4">
+              <button (click)="editExam(exam)" class="text-blue-500">Edit</button>
+              <button (click)="deleteExam(exam.examId)" class="text-red-500 ml-2">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

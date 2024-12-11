@@ -1,0 +1,39 @@
+<div class="min-h-screen bg-gray-50 flex p-4">
+    <div class="bg-white shadow rounded-lg w-full max-w-4xl p-6">
+      <h1 class="text-3xl font-bold text-gray-800 mb-4">Your Grades</h1>
+  
+      <!-- Check if grades are empty -->
+      <div *ngIf="!grades || grades.length === 0" class="text-center">
+        <img
+          src="https://via.placeholder.com/200?text=No+Grades"
+          alt="No Grades"
+          class="mx-auto mb-4"
+        />
+        <p class="text-gray-500 text-lg">
+          Your teachers haven't assigned any grades to you yet. Please check back later!
+        </p>
+      </div>
+  
+      <!-- Display grades -->
+      <div *ngIf="grades && grades.length > 0">
+        <table class="min-w-full border-collapse border border-gray-200">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="p-3 text-left border-b border-gray-200 font-semibold text-gray-600">Subject</th>
+              <th class="p-3 text-left border-b border-gray-200 font-semibold text-gray-600">Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let grade of grades"
+              class="hover:bg-gray-50 transition"
+            >
+              <td class="p-3 border-b border-gray-200">{{ grade.course.courseName }}</td>
+              <td class="p-3 border-b border-gray-200">{{ grade.gradeValue }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

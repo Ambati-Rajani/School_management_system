@@ -1,0 +1,78 @@
+<div class="p-4">
+    <h1 class="text-xl font-bold">Grades Management</h1>
+  
+    <!-- Add Grade -->
+    <div class="my-4 p-4 bg-gray-100 rounded-lg shadow">
+      <h2 class="text-lg font-semibold">Add Grade</h2>
+      <form class="flex flex-col gap-4">
+        <input
+          id="studentId"
+          class="border p-2 rounded"
+          [(ngModel)]="gradePayload.studentId"
+          placeholder="Student ID"
+          [value]="studentId"
+          name="studentId"
+        />
+        <div class="mb-4">
+          <label for="class" class="block text-lg font-medium text-gray-700">Select Course</label>
+          <select
+            id="class"
+            class="form-select w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            [(ngModel)]="gradePayload.courseId"
+            name="gradePayload.courseId"
+            required
+          >
+            <option value="" disabled>Select Course</option>
+            <option *ngFor="let course of courses" [value]="course.courseId">{{ course.courseName }}</option>
+          </select>
+        </div>
+        <div class="mb-4">
+            <label for="class" class="block text-lg font-medium text-gray-700">Select Teacher</label>
+            <select
+              id="class"
+              class="form-select w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              [(ngModel)]="gradePayload.teacherId"
+              name="gradePayload.teacherId"
+              required
+            >
+              <option value="" disabled>Select class</option>
+              <option *ngFor="let teacher of teachers" [value]="teacher.enrollmentNumber">{{ teacher.name }}</option>
+            </select>
+          </div>
+        <input
+          class="border p-2 rounded"
+          [(ngModel)]="gradePayload.gradeValue"
+          placeholder="Grade Value"
+          name="gradePayload.gradeValue"
+        />
+        <button
+          class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          (click)="addGrade()"
+        >
+          Add Grade
+        </button>
+      </form>
+    </div>
+  
+    <!-- List Grades -->
+    <div class="my-4">
+      <h2 class="text-lg font-semibold">Grades List</h2>
+      <table class="w-full border-collapse border border-gray-200">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border p-2">Grade</th>
+            <th class="border p-2">Course</th>
+            <th class="border p-2">Teacher</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let grade of grades">
+            <td class="border p-2 text-center">{{ grade.gradeValue }}</td>
+            <td class="border p-2 text-center">{{ grade.course.courseName }}</td>
+            <td class="border p-2 text-center">{{ grade.teacher.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

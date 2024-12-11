@@ -1,0 +1,12 @@
+<div class="p-4 max-w-md mx-auto bg-white rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold">Assign Subjects to Teacher</h2>
+    
+    <input type="text" [(ngModel)]="teacherId" placeholder="Teacher ID" class="border p-2 my-2 w-full"/>
+    
+    <div *ngFor="let subject of subjects">
+      <input type="checkbox" [value]="subject.id" [(ngModel)]="subjectId" class="mr-2"/>
+      <label>{{ subject.name }}</label>
+    </div>
+    
+    <button (click)="assingSubject()" class="mt-4 p-2 bg-blue-500 text-white rounded">Assign Subjects</button>
+  </div>

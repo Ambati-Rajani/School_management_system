@@ -1,0 +1,44 @@
+<aside class=" bg-white shadow-lg h-screen">
+    <div class="p-6 border-b">
+      <h2 class="text-xl font-bold text-gray-800">Teacher Portal</h2>
+    </div>
+  
+    <!-- Sidebar Links -->
+    <nav class="mt-4">
+      <ul class="space-y-2">
+        <ng-container *ngFor="let link of links">
+          <!-- Parent Route -->
+          <li>
+            <a
+              [routerLink]="link.route"
+              routerLinkActive="bg-indigo-100 text-indigo-700"
+              class="flex items-center px-4 py-2 text-gray-600 hover:bg-indigo-50 hover:text-indigo-700 rounded-md transition"
+            >
+              <span class="mr-2">{{ link.icon }}</span> {{ link.label }}
+            </a>
+          </li>
+  
+          <!-- Subroutes -->
+          <ul *ngIf="link.subRoutes.length > 0" class="pl-6 space-y-1">
+            <li *ngFor="let subRoute of link.subRoutes">
+              <a
+                [routerLink]="subRoute.route"
+                routerLinkActive="bg-indigo-200 text-indigo-800"
+                class="flex items-center px-4 py-2 text-gray-500 hover:bg-indigo-50 hover:text-indigo-700 rounded-md transition"
+              >
+                {{ subRoute?.label }}
+              </a>
+            </li>
+          </ul>
+        </ng-container>
+      </ul>
+    </nav>
+  
+    <button
+      (click)="logout()"
+      class="flex items-center border mx-auto mt-8 justify-center border-red-400 bg-red-400 rounded-md text-white p-2 text-center w-[10em]"
+    >
+      Logout
+    </button>
+  </aside>
+  

@@ -1,0 +1,70 @@
+<div class="p-6 bg-gray-50 min-h-screen">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">
+      Mark Attendance for Class {{ classDetails?.name }}
+    </h1>
+  
+    <!-- Date Filter -->
+    <div class="flex items-center gap-4 mb-6">
+      <label for="date" class="font-medium text-gray-700">Select Date:</label>
+      <input
+        id="date"
+        type="date"
+        [(ngModel)]="selectedDate"
+        class="border border-gray-300 rounded-md p-2"
+      />
+    </div>
+  
+    <!-- Table -->
+    <div class="overflow-x-auto bg-white shadow rounded-lg">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">
+              #
+            </th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">
+              Student Name
+            </th>
+            <th class="px-4 py-2 text-center text-sm font-medium text-gray-700">
+              Present
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students; let i = index" class="hover:bg-gray-100">
+            <td class="px-4 py-2 text-sm text-gray-700">{{ i + 1 }}</td>
+            <td class="px-4 py-2 text-sm text-gray-700">
+              {{ student.name }}
+            </td>
+            <td class="px-4 py-2 text-center">
+              <input
+                type="checkbox"
+                [(ngModel)]="student.isPresent"
+                name="'isPresent_' + student.studentId"
+                class="h-5 w-5 text-indigo-500 border-gray-300 rounded"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Mark All Present -->
+    <div class="flex items-center justify-between mt-4">
+      <button
+        (click)="markAllPresent()"
+        class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+      >
+        Mark All Present
+      </button>
+  
+      <button
+        (click)="submitAttendance()"
+        [disabled]="isSubmitted"
+        class="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600"
+      >
+        {{isSubmitted ? "Submitted" : "Submit Attendance"}}
+      </button>
+    </div>
+  </div>
+  

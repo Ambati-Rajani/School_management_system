@@ -1,0 +1,80 @@
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-4">Course Management</h1>
+  
+    <!-- Add New Course -->
+    <div class="bg-gray-100 p-4 rounded shadow mb-6">
+      <h2 class="text-xl font-semibold mb-2">Add New Course</h2>
+      <form (submit)="createCourse()" class="flex flex-col gap-4">
+        <input
+          type="text"
+          placeholder="Course Name"
+          [(ngModel)]="newCourse.courseName"
+          class="p-2 border rounded"
+          required
+          name="newCourse.courseName"
+        />
+        <textarea
+          placeholder="Description"
+          [(ngModel)]="newCourse.description"
+          class="p-2 border rounded"
+          required
+          name="newCourse.description"
+        ></textarea>
+        <input
+          type="text"
+          placeholder="Prerequisites (comma separated)"
+          [(ngModel)]="prerequisitesInput"
+          class="p-2 border rounded"
+          name="prerequisitesInput"
+        />
+        <div class="flex gap-2">
+          <input
+            type="date"
+            placeholder="Day"
+            [(ngModel)]="newCourse.schedule.day"
+            class="p-2 border rounded"
+            required
+            name="newCourse.schedule.day"
+          />
+          <input
+            type="time"
+            placeholder="Time"
+            [(ngModel)]="newCourse.schedule.time"
+            class="p-2 border rounded"
+            required
+            name="newCourse.schedule.time"
+          />
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Course</button>
+      </form>
+    </div>
+  
+    <!-- Course List -->
+    <div class="bg-gray-100 p-4 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">All Courses</h2>
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="p-2 border">Name</th>
+            <th class="p-2 border">Description</th>
+            <th class="p-2 border">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courses" class="border-b">
+            <td class="py-2 text-center">{{ course.courseName }}</td>
+            <td class="py-2 text-center">{{ course.description }}</td>
+            <td class="py-2 text-center">
+              <button
+                class="bg-red-500 text-white px-2 py-1 rounded text-center"
+                (click)="deleteCourse(course.courseId)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

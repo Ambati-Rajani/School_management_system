@@ -1,0 +1,64 @@
+<div class="flex min-h-screen bg-gray-100">
+    
+  
+    <!-- Content -->
+    <main class="flex-1 p-8">
+      <h1 class="text-2xl font-bold mb-4">Teacher Details</h1>
+  
+      <!-- Teacher Information -->
+      <div class="bg-white p-6 shadow-lg rounded-lg">
+        <div *ngIf="!isEditing; else editMode">
+          <p class="text-2xl font-medium text-green-500"><strong class="font-bold text-black">Employee Id:</strong> {{ teacher.enrollmentNumber }}</p>
+          <p><strong>Name:</strong> {{ teacher.name }}</p>
+          <p><strong>DOB:</strong> {{ teacher.dateOfBirth }}</p>
+          <p><strong>Phone:</strong> {{ teacher.phone }}</p>
+          <p><strong>Email:</strong> {{ teacher.email }}</p>
+          <p><strong>Department:</strong> {{ teacher.department }}</p>
+            
+          <p><strong>Allocated Class:</strong> {{ teacher.allocatedClass }}</p>
+          <button
+            (click)="toggleEdit()"
+            class="mt-4 p-2 bg-blue-500 text-white rounded"
+          >
+            Edit
+          </button>
+        </div>
+  
+        <ng-template #editMode>
+          <label class="block mb-2">Name</label>
+          <input
+            type="text"
+            [(ngModel)]="teacher.name"
+            class="border p-2 w-full rounded mb-4"
+          />
+  
+          <label class="block mb-2">Phone</label>
+          <input
+            type="phone"
+            [(ngModel)]="teacher.phone"
+            class="border p-2 w-full rounded mb-4"
+          />
+  
+          <div class="flex space-x-4">
+            <button
+              (click)="saveChanges()"
+              class="p-2 bg-green-500 text-white rounded"
+            >
+              Save
+            </button>
+            <button
+              (click)="toggleEdit()"
+              class="p-2 bg-red-500 text-white rounded"
+            >
+              Cancel
+            </button>
+          </div>
+        </ng-template>
+
+    </div>
+    <div class="flex flex-col gap-6 mt-8">
+        <h1 class="text-2xl font-bold mb-4">Announcements</h1>
+    </div>
+    </main>
+  </div>
+  

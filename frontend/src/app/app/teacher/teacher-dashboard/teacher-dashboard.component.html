@@ -1,0 +1,42 @@
+<div class="p-6 bg-gray-100 min-h-screen w-full">
+    <h1 class="text-2xl font-bold mb-4">Teacher Dashboard</h1>
+  
+    <!-- Allocated Classes -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold">Allocated Classes</h2>
+      <div *ngIf="classes.length > 0; else noClasses" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div *ngFor="let cls of classes" class="p-4 bg-white shadow-md rounded-lg">
+          <h3 class="text-lg font-medium">{{ cls.name }}</h3>
+          <p class="text-sm text-gray-600">Total Students: {{ cls.studentCount }}</p>
+          <div class="mt-4">
+            <button
+            (click)="markAttendance(cls.sclassId)"
+              class="px-4 py-2 bg-blue-500 text-white rounded-md"
+            >
+              Mark Attendance
+            </button>
+          </div>
+        </div>
+      </div>
+      <ng-template #noClasses>
+        <p class="text-gray-600">No classes allocated yet.</p>
+      </ng-template>
+    </section>
+  
+    <!-- Performance Overview -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold">Class Performance Overview</h2>
+      <div class="p-4 bg-white shadow-md rounded-lg">
+        <p class="text-gray-600">Coming soon...</p>
+      </div>
+    </section>
+  
+    <!-- Messages -->
+    <section>
+      <h2 class="text-xl font-semibold">Messages</h2>
+      <div class="p-4 bg-white shadow-md rounded-lg">
+        <p class="text-gray-600">Send announcements or messages to your classes.</p>
+      </div>
+    </section>
+  </div>
+  

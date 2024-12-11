@@ -1,0 +1,108 @@
+<div class="px-4 py-8 w-[40em] mx-auto">
+    <h3 class="text-3xl font-semibold text-center text-gray-800 mb-6">
+      {{ isEdit ? "Edit" : "Create" }} Teacher
+    </h3>
+  
+    <form (ngSubmit)="onSubmit()" autocomplete="off" class="p-6 bg-white shadow-md rounded-lg w-full">
+      <!-- Teacher Name -->
+      <div class="mb-4">
+        <label for="name" class="block text-lg font-medium text-gray-700">Name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-input w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          [(ngModel)]="teacher.name"
+          name="name"
+          placeholder="Enter teacher's name"
+          required
+        />
+      </div>
+  
+      <!-- Date of Birth -->
+      <div class="mb-4">
+        <label for="dateOfBirth" class="block text-lg font-medium text-gray-700">Date of Birth</label>
+        <input
+          type="date"
+          id="dateOfBirth"
+          class="form-input w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          [(ngModel)]="teacher.dateOfBirth"
+          name="dateOfBirth"
+          required
+        />
+      </div>
+
+       <!-- Teacher Phone -->
+       <div class="mb-4">
+        <label for="phone" class="block text-lg font-medium text-gray-700">Phone</label>
+        <input
+          type="number"
+          id="phone"
+          class="form-input w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          [(ngModel)]="teacher.phone"
+          name="phone"
+          placeholder="Enter teacher's phone"
+          required
+        />
+      </div>
+  
+      <!-- Email -->
+      <div class="mb-4">
+        <label for="email" class="block text-lg font-medium text-gray-700">Email</label>
+        <input
+          id="email"
+          rows="3"
+          class="form-input w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          [(ngModel)]="teacher.email"
+          name="email"
+          placeholder="Enter email"
+        />
+      </div>
+
+      <!-- Department -->
+      <div class="mb-4">
+        <label for="department" class="block text-lg font-medium text-gray-700">Department</label>
+        <input
+          id="department"
+          rows="3"
+          class="form-input w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          [(ngModel)]="teacher.department"
+          name="department"
+          placeholder="Enter department"
+        />
+      </div>
+  
+      <!-- Enrollment Number -->
+      <div class="mb-4 flex items-center">
+        <div class="flex flex-col w-full">
+          <label for="enrollmentNumber" class="block text-lg font-medium text-gray-700">Enrollment Number</label>
+          <input
+            type="text"
+            id="enrollmentNumber"
+            class="form-input w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            [(ngModel)]="teacher.enrollmentNumber"
+            name="enrollmentNumber"
+            placeholder="Generated enrollment number"
+            readonly
+          />
+        </div>
+        <button
+          type="button"
+          (click)="generateEnrollmentNumber()"
+          class="ml-4 mt-[1.4em] px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition duration-200"
+        >
+          Generate
+        </button>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="text-center mt-6">
+        <button
+          class="bg-green-500 text-white font-semibold py-2 px-6 rounded-md hover:bg-green-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-green-500"
+          type="submit"
+        >
+          {{ isEdit ? "Update" : "Create" }}
+        </button>
+      </div>
+    </form>
+  </div>
+  
